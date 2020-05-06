@@ -1,38 +1,43 @@
-// ===========================
-// Puerto
-// ===========================
+// ============================
+//  Puerto
+// ============================
 process.env.PORT = process.env.PORT || 3000;
 
-// ===========================
-// Entorno
-// ===========================
+
+// ============================
+//  Entorno
+// ============================
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
-// ===========================
-// Vencimiento Token
-// ===========================
-process.env.CADUCIDAD_TOKEN = 60*60*24*30;
 
-// ===========================
-// SEED auth
-// ===========================
-process.env.SEED = process.env.SEED || "este-es-el-seed";
+// ============================
+//  Vencimiento del Token
+// ============================
+// 60 segundos
+// 60 minutos
+// 24 horas
+// 30 días
+process.env.CADUCIDAD_TOKEN = '48h';
 
-// ===========================
-// Base de datos
-// ===========================
-let urlBD;
 
-if( process.env.NODE_ENV === 'dev') {
-   urlBD = 'mongodb://localhost:27017/cafe';
+// ============================
+//  SEED de autenticación
+// ============================
+process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';
+
+// ============================
+//  Base de datos
+// ============================
+let urlDB;
+
+if (process.env.NODE_ENV === 'dev') {
+    urlDB = 'mongodb://localhost:27017/cafe';
 } else {
-   urlBD = 'mongodb+srv://cafe-user:123@cluster0-ptrfp.mongodb.net/cafe';
+    urlDB = process.env.MONGO_URI;
 }
+process.env.URLDB = urlDB;
 
-process.env.URLBD = urlBD;
-
-// ===========================
-// Google client id
-// ===========================
-
-process.env.CLIENT_ID = process.env.CLIENT_ID || '985221881368-o04vui4rsbgp3om22j0kgc6dttq984n1.apps.googleusercontent.com';
+// ============================
+//  Google Client ID
+// ============================
+process.env.CLIENT_ID = process.env.CLIENT_ID || '219758474264-vh1bibcphgvbc32km508lubtqkanikf1.apps.googleusercontent.com';
